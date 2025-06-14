@@ -20,10 +20,7 @@ class BestSellerCard extends StatelessWidget {
           spacing: 30,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomBookImage(
-              image: bookModel.image,
-              heroTag: bookModel.id,
-            ),
+            CustomBookImage(image: bookModel.image),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

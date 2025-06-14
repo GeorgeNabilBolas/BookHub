@@ -6,6 +6,8 @@ import '../../../../../Core/utils/size_config.dart';
 import '../../../../../Core/widgets/custom_book_info_widgets.dart';
 import 'appbar/book_details_appbar.dart';
 import 'book_details_price_builder.dart';
+import 'more_books/more_books_builder.dart';
+import 'more_books/more_books_label.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
   const BookDetailsViewBody({
@@ -32,46 +34,9 @@ class BookDetailsViewBody extends StatelessWidget {
         ),
         CustomBookRating(raiting: bookModel.raiting),
         BookDetailsPriceBuilder(price: bookModel.price),
-        const SeeMoreLabel(),
-        SeeMoreBuilder(image: bookModel.image),
+        const MoreBooksLabel(),
+        MoreBooksBuilder(image: bookModel.image),
       ],
-    );
-  }
-}
-
-class SeeMoreBuilder extends StatelessWidget {
-  const SeeMoreBuilder({
-    super.key,
-    required this.image,
-  });
-  final String image;
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 112,
-      child: ListView.separated(
-        itemCount: 10,
-        separatorBuilder: (context, index) => const Padding(padding: AppPaddings.horizontal5),
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => CustomBookImage(image: image, heroTag: 'heroTag $index'),
-      ),
-    );
-  }
-}
-
-class SeeMoreLabel extends StatelessWidget {
-  const SeeMoreLabel({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Text(
-        'You can also like',
-        style: AppTextStyles.text14.copyWith(fontWeight: FontWeight.w600),
-      ),
     );
   }
 }

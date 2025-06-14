@@ -21,7 +21,7 @@ class CustomContainer extends StatelessWidget {
       child: Center(
         child: Text(
           style: AppTextStyles.text15.copyWith(color: dataColor),
-          '$data \$',
+          data,
         ),
       ),
     );

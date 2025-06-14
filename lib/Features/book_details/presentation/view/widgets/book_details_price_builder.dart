@@ -16,7 +16,7 @@ class BookDetailsPriceBuilder extends StatelessWidget {
         Expanded(
           child: CustomContainer(
             dataColor: AppThemeHelper.getLeftContainerDataColor(context),
-            data: price.toString(),
+            data: '${price.toString()} \$',
             decoration: getLeftContainerDecoration(context),
           ),
         ),
