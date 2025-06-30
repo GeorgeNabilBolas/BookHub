@@ -10,9 +10,9 @@ part 'fetch_more_books_state.dart';
 class FetchMoreBooksCubit extends Cubit<FetchMoreBooksState> {
   FetchMoreBooksCubit(this._bookDetailsRepo) : super(FetchMoreBooksInitial());
   final BookDetailsRepo _bookDetailsRepo;
-  Future<void> fetchMoreBooks() async {
+  Future<void> fetchMoreBooks(String query) async {
     emit(FetchMoreBooksLoading());
-    final result = await _bookDetailsRepo.fetchMoreBooks();
+    final result = await _bookDetailsRepo.fetchMoreBooks(query);
     result.when(
       onSuccess: (books) => emit(FetchMoreBooksSuccess(books)),
       onFailure: (error) => emit(FetchMoreBooksFailure(error)),

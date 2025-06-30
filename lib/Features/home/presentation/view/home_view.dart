@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dio/dio.dart';
 
-import '../../../../Core/apis/api_service.dart';
-import '../../data/repo/home_repo_impl.dart';
+
+import '../../../../Core/di/service_locator.dart';
+import '../../data/repo/home_repo.dart';
 import '../cubit/fetch_best_seller_books/fetch_best_seller_books_cubit.dart';
 import '../cubit/fetch_main_books/fetch_books_cubit.dart';
 import 'widgets/home_view_body.dart';
@@ -18,11 +18,11 @@ class HomeView extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) =>
-                FetchMainBooksCubit(HomeRepoImpl(ApiService(Dio())))..fetchMainBooks(),
+                FetchMainBooksCubit(getIt<HomeRepo>())..fetchMainBooks(),
           ),
           BlocProvider(
             create: (context) =>
-                FetchBestSellerBooksCubit(HomeRepoImpl(ApiService(Dio())))..fetchBestSellerBooks(),
+                FetchBestSellerBooksCubit(getIt<HomeRepo>())..fetchBestSellerBooks(),
           ),
         ],
         child: const HomeViewBody(),

@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'Core/Constants/constants.dart';
 import 'Core/routes/app_router.dart';
 import 'Core/theme/app_theme.dart';
+import 'Core/di/service_locator.dart';
 import 'Core/utils/bloc_observer.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setupServiceLocator();
   Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
 }

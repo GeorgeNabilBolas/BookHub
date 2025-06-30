@@ -8,11 +8,11 @@ class BookDetailsRepoImpl implements BookDetailsRepo {
   const BookDetailsRepoImpl(this._apiService);
   final ApiService _apiService;
   @override
-  Future<ApiResult<List<BookModel>>> fetchMoreBooks() async {
+  Future<ApiResult<List<BookModel>>> fetchMoreBooks(String query) async {
     List<BookModel> listOfBooks = [];
     try {
       final data =
-          await _apiService.get(endPoint: 'volumes', queryParameters: {'q': 'science'})
+          await _apiService.get(endPoint: 'volumes', queryParameters: {'q': query})
               as Map<String, dynamic>;
       listOfBooks = (data['items'] as List).map((e) => BookModel.fromJson(e)).toList();
       return ApiSuccess(listOfBooks);

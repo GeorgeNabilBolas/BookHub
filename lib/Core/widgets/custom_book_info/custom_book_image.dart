@@ -22,7 +22,6 @@ class CustomBookImage extends StatelessWidget {
 
 class _ImageBuilder extends StatelessWidget {
   const _ImageBuilder({
-    super.key,
     required this.image,
   });
 
