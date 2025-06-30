@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../../../../../Core/Constants/app_paddings.dart';
 import '../../../../../../Core/Constants/app_text_styles.dart';
-import '../../../../../../Core/models/book_model.dart';
+import '../../../../../../Core/models/book_model/book_model.dart';
 import '../../../../../../Core/widgets/custom_book_info_widgets.dart';
 
-class BestSellerCard extends StatelessWidget {
-  const BestSellerCard({
+class CustomBookInfoCard extends StatelessWidget {
+  const CustomBookInfoCard({
     super.key,
     required this.bookModel,
   });
@@ -20,7 +20,9 @@ class BestSellerCard extends StatelessWidget {
           spacing: 30,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            CustomBookImage(image: bookModel.image),
+            CustomBookImage(
+              image: bookModel.volumeInfo?.imageLinks?.thumbnail ?? 'assets/test.png',
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,17 +30,17 @@ class BestSellerCard extends StatelessWidget {
                 children: [
                   CustomBookTitle(
                     style: AppTextStyles.text20,
-                    title: bookModel.title,
+                    title: bookModel.volumeInfo?.title ?? 'Unknown',
                   ),
                   CustomBookSubtitle(
                     style: AppTextStyles.text14,
-                    subTitle: bookModel.subTitle,
+                    subTitle: bookModel.volumeInfo?.description ?? 'Unknown',
                   ),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomBookPrice(price: bookModel.price),
-                      CustomBookRating(raiting: bookModel.raiting),
+                      CustomBookPrice(price: 50),
+                      CustomBookRating(raiting: '4.5'),
                     ],
                   ),
                 ],

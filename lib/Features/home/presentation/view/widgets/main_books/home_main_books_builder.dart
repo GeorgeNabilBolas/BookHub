@@ -1,15 +1,22 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../../../Core/Constants/app_paddings.dart';
-import '../../../../../../Core/models/book_model.dart';
+import '../../../../../../Core/models/book_model/book_model.dart';
+import '../../../../../../Core/models/book_model/volume_info.dart';
 import '../../../../../../Core/routes/app_router.dart';
 import '../../../../../../Core/utils/size_config.dart';
 import '../../../../../../Core/widgets/custom_book_info/custom_book_image.dart';
+import '../../../cubit/fetch_main_books/fetch_books_cubit.dart';
 
 class MainBooksBuilder extends StatelessWidget {
   const MainBooksBuilder({
     super.key,
+    required this.listOfBooks,
   });
+  final List<BookModel> listOfBooks;
 
   @override
   Widget build(BuildContext context) {
@@ -27,19 +34,14 @@ class MainBooksBuilder extends StatelessWidget {
   }
 
   Widget buildImageWidget(BuildContext context, int index) {
-    final BookModel bookModel = BookModel(
-      price: 0.0,
-      title: 'The Jungle Book',
-      subTitle: 'Rudyard Kipling',
-      image: 'assets/test.png',
-      raiting: const Raiting(rate: 4.8, count: 2390),
-      id: '$index for main books',
-    );
+    final bookModel = listOfBooks[index];
     return GestureDetector(
       onTap: () => context.push(AppRouter.bookDetails, extra: bookModel),
       child: CustomBookImage(
         heroTag: bookModel.id,
-        image: 'assets/test.png',
+        image:
+            bookModel.volumeInfo?.imageLinks?.thumbnail ??
+            'https://developers.google.com/static/maps/documentation/streetview/images/error-image-generic.png',
       ),
     );
   }

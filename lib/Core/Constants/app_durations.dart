@@ -7,5 +7,8 @@ class AppDurations {
   static const Duration animateSplashText = Duration(milliseconds: 1000);
 
   ///delay splash text .5 seconds
-  static const Duration delaySplashNavigate = Duration(milliseconds: 1000 + 500);
+  static const Duration delaySplashNavigate = Duration(
+    milliseconds: 1000 + 500,
+  );
+  static const Duration timeoutDuration = Duration(seconds: 3);
 }

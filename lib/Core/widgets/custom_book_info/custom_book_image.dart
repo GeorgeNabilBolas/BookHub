@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import '../../Constants/constants.dart';
 
@@ -36,10 +34,12 @@ class _ImageBuilder extends StatelessWidget {
       aspectRatio: 150 / 224,
       child: DecoratedBox(
         decoration: BoxDecoration(
-          borderRadius: const BorderRadiusGeometry.all(AppBorderRadius.circular16),
+          borderRadius: const BorderRadiusGeometry.all(
+            AppBorderRadius.circular16,
+          ),
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage(image),
+            image: NetworkImage(image),
           ),
         ),
       ),

@@ -5,7 +5,7 @@ import 'Core/routes/app_router.dart';
 import 'Core/theme/app_theme.dart';
 import 'Core/utils/bloc_observer.dart';
 
-void main() {
+void main() async {
   Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
 }
