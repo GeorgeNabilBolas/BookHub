@@ -27,7 +27,18 @@ class SearchViewBody extends StatelessWidget {
             );
           } else if (state is SearchCubitFailure) {
             return Center(
-              child: Text(state.exception.message),
+              child: Column(
+                children: [
+                  Text(state.exception.toString()),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      context.read<SearchCubitCubit>().searchBooks('all');
+                    },
+                    child: const Text('Get all books'),
+                  ),
+                ],
+              ),
             );
           }
           return const Center(
